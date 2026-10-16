@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCBank — Minecraft Community Banking</title>
+<style>
+:root{--bg:#071018;--panel:#0b1722;--panel2:#101f2c;--line:#203443;--text:#f4f7fb;--muted:#a7b5c5;--green:#27c36a;--green2:#159c50;--blue:#45a4ff;--purple:#a47aff;--red:#ff5b67;--shadow:0 18px 50px #0005}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px clamp(16px,4vw,52px);background:#071018f2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.brand{display:flex;align-items:center;gap:12px;font-size:30px;font-weight:950;letter-spacing:-1.5px;white-space:nowrap}.brand .green{color:var(--green)}.grass{width:40px;height:40px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(#64c76a 0 28%,#765039 28% 100%);box-shadow:inset 0 0 0 3px #ffffff12;font-size:23px}.nav{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}.nav button,.theme{border:0;background:transparent;color:var(--muted);padding:12px 15px;border-radius:9px;font-weight:650}.nav button.active,.nav button:hover{background:#10202c;color:#fff;box-shadow:inset 0 -3px var(--green)}.theme{border:1px solid var(--line);font-size:20px}.hero{position:relative;isolation:isolate;overflow:hidden;padding:52px clamp(20px,5vw,70px);min-height:300px;background:linear-gradient(90deg,#061019f2,#061019b5 48%,#06101945),linear-gradient(0deg,#071018 0%,transparent 35%),radial-gradient(ellipse at 80% 10%,#e4a45e 0,#b76e4a 14%,#334c4c 36%,#152e35 63%,#0b1b26 80%)}.hero:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.45;background:linear-gradient(135deg,transparent 0 30%,#152b2e 30% 34%,transparent 34% 40%,#314a37 40% 46%,transparent 46%),repeating-linear-gradient(0deg,transparent 0 28px,#02090b55 29px 31px),repeating-linear-gradient(90deg,transparent 0 42px,#02090b33 43px 45px)}.hero-inner{max-width:1250px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:28px}.eyebrow{color:#80e7a8;font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(42px,6vw,76px);line-height:1;margin:10px 0 12px;letter-spacing:-3px}.hero h1 span{color:var(--green)}.hero h2{font-size:clamp(19px,2.5vw,28px);margin:0 0 10px}.hero p{color:#d0dae4;font-size:17px;margin:0 0 22px}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid transparent;border-radius:9px;padding:12px 17px;font-weight:800;transition:.15s}.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}.primary{background:var(--green);color:#06130b}.secondary{background:#0c1722c9;border-color:#41515e;color:white}.danger{background:#351820;color:#ffb6bd;border-color:#66303a}.feature-box{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;min-width:min(430px,100%);padding:20px;background:#0a1722c9;border:1px solid #52606b;border-radius:15px;box-shadow:var(--shadow);backdrop-filter:blur(8px)}.feature{text-align:center}.feature .emoji{font-size:26px}.feature strong{display:block;margin:4px 0}.feature small{color:var(--muted)}main{max-width:1450px;margin:0 auto;padding:18px clamp(14px,2vw,26px) 28px}.page{display:none}.page.active{display:block}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#0a1721,#09131c);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0;box-shadow:0 8px 24px #0001}.card h2,.card h3{margin:0}.card-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}.icon{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;font-size:24px;font-weight:900;background:#143b2a;color:#9affbf;flex:none}.icon.blue{background:#123d68;color:#91caff}.icon.purple{background:#39265d;color:#d8c0ff}.sub{color:var(--muted);margin:0 0 20px}.field{display:flex;flex-direction:column;gap:6px;margin:13px 0}.field label{font-weight:650;color:#e2e9f0}.field input,.field select,.field textarea{width:100%;background:#101e2a;color:var(--text);border:1px solid #3b4d5c;border-radius:8px;padding:12px 13px;outline:none}.field input:focus,.field select:focus{border-color:var(--green);box-shadow:0 0 0 3px #27c36a22}.field input::placeholder{color:#8293a4}.wide{width:100%}.account-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:13px 0;padding:15px;background:var(--panel2);border:1px solid var(--line);border-radius:10px}.balance{font-size:24px;font-weight:850;color:#8bf0ae}.muted{color:var(--muted)}.tabs{display:flex;gap:5px;border-bottom:1px solid var(--line);margin:18px 0 0;overflow:auto}.tabs button{background:transparent;border:0;border-bottom:3px solid transparent;padding:11px 12px;color:var(--muted);white-space:nowrap}.tabs button.active{color:white;border-bottom-color:var(--green)}.form-panel{padding:14px;background:#08131c;border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;padding:12px 13px;border-bottom:1px solid #1b2b38}th{font-size:12px;text-transform:uppercase;letter-spacing:.7px;color:#b7c4d1;background:#101d28}td{color:#e0e8ef}tbody tr:hover{background:#ffffff05}.positive{color:#75e5a0;font-weight:750}.negative{color:#ff8890;font-weight:750}.empty{text-align:center;padding:38px 15px;color:var(--muted)}.empty .big{font-size:34px;margin-bottom:8px}.account-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.account-tile{background:#0c1924;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;justify-content:space-between;gap:12px;align-items:center}.account-tile h3{font-size:17px}.pill{font-size:11px;border:1px solid #2e6546;background:#102b1e;color:#91edb2;border-radius:30px;padding:3px 8px}.notice{margin:0 0 18px;padding:11px 14px;border:1px solid #635126;background:#28220f;color:#f1d995;border-radius:9px;font-size:13px}.toast{position:fixed;bottom:20px;right:20px;z-index:20;max-width:360px;padding:14px 18px;border-radius:10px;background:#183b29;border:1px solid #2b8d51;color:#e5ffed;box-shadow:var(--shadow);display:none}.toast.show{display:block;animation:pop .2s ease}@keyframes pop{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}footer{border-top:5px solid #2e5930;background:linear-gradient(#382a1d,#171a18);padding:24px clamp(16px,4vw,52px);display:flex;justify-content:space-between;align-items:center;gap:18px;color:#d1d7dd}footer .brand{font-size:23px}footer .grass{width:30px;height:30px;font-size:17px}footer small{color:#aeb8c1}body.light{--bg:#eaf0f4;--panel:#fff;--panel2:#f1f5f8;--line:#cbd6df;--text:#152431;--muted:#586b7a;--shadow:0 18px 50px #0001}body.light .topbar{background:#f8fbfdf2}body.light .nav button.active,body.light .nav button:hover{background:#e1eee6;color:#13251a}body.light .card{background:#fff}body.light .field input,body.light .field select{background:#f6f9fb;color:#152431}body.light .form-panel{background:#f5f8fa}body.light .account-tile,body.light .account-summary{background:#f1f5f8}body.light td{color:#152431}body.light .hero{color:#fff}
+@media(max-width:1050px){.hero-inner{align-items:flex-start;flex-direction:column}.feature-box{width:100%;min-width:0}.cards{grid-template-columns:1fr 1fr}.cards .card:last-child{grid-column:1/-1}}@media(max-width:760px){.topbar{align-items:flex-start;flex-direction:column}.brand{font-size:26px}.nav{justify-content:flex-start;width:100%}.nav button{padding:10px}.hero{padding-top:36px}.cards,.account-list{grid-template-columns:1fr}.cards .card:last-child{grid-column:auto}.two{grid-template-columns:1fr}.feature-box{gap:7px;padding:13px}.feature small{font-size:11px}footer{align-items:flex-start;flex-direction:column}.hero h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="grass">🌱</span><span>MC<span class="green">Bank</span></span></div>
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-page="home">⌂ &nbsp;Home</button>
+    <button data-page="create">＋ &nbsp;Create Account</button>
+    <button data-page="manage">▤ &nbsp;Manage Accounts</button>
+    <button data-page="transactions">▣ &nbsp;Transactions</button>
+  </nav>
+  <button class="theme" id="themeBtn" title="Toggle light/dark mode" aria-label="Toggle theme">☾</button>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Minecraft community banking</div>
+      <h1>MC<span>Bank</span></h1>
+      <h2>Your trusted bank in the Minecraft world</h2>
+      <p>Safe. Simple. Secure. Built for your community.</p>
+      <div class="actions">
+        <button class="btn primary" data-goto="create">▤ &nbsp;Create an Account</button>
+        <button class="btn secondary" data-goto="manage">Manage Accounts &nbsp; →</button>
+      </div>
+    </div>
+    <div class="feature-box">
+      <div class="feature"><div class="emoji">🛡️</div><strong>Community-first</strong><small>Built for your server</small></div>
+      <div class="feature"><div class="emoji">⛏️</div><strong>Easy to use</strong><small>Manage your funds</small></div>
+      <div class="feature"><div class="emoji">💎</div><strong>Track it all</strong><small>Clear transaction history</small></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="notice">⛏️ <strong>Minecraft roleplay only:</strong> MCBank is a pretend in-game ledger. It does not connect to real banks or move real money. Data is saved in this browser on this device.</div>
+
+  <section class="page active" id="page-home">
+    <div class="cards">
+      <article class="card">
+        <div class="card-head"><div class="icon">＋</div><div><h2>Create a bank account</h2></div></div>
+        <p class="sub">Open an account for your in-game funds.</p>
+        <form id="createForm">
+          <div class="field"><label for="newName">Account name</label><input id="newName" required maxlength="40" placeholder="e.g. Steve, Builder Co, Town Fund"></div>
+          <div class="field"><label for="newOwner">Owner / player name</label><input id="newOwner" required maxlength="32" placeholder="Your Minecraft username"></div>
+          <div class="field"><label for="newDeposit">Initial deposit (£)</label><input id="newDeposit" type="number" min="0" max="1000000000" step="0.01" value="0.00" required></div>
+          <button class="btn primary wide" type="submit">＋ &nbsp;Create Account</button>
+        </form>
+      </article>
+      <article class="card">
+        <div class="card-head"><div class="icon blue">▤</div><div><h2>Access bank accounts</h2></div></div>
+        <p class="sub">Select an account to view its balance and manage funds.</p>
+        <div class="field"><label for="homeAccount">Select account</label><select id="homeAccount"><option value="">— Choose an account —</option></select></div>
+        <div class="account-summary"><div><strong id="homeAccountName">No account selected</strong><div class="muted" id="homeOwner">Choose an account above</div><div class="muted">Balance</div><div class="balance" id="homeBalance">£0.00</div></div><div style="font-size:42px">🧰</div></div>
+        <button class="btn secondary wide" data-goto="manage">Manage Funds →</button>
+      </article>
+      <article class="card">
+        <div class="card-head"><div class="icon purple">▣</div><div><h2>Transaction history</h2></div></div>
+        <p class="sub">Review recent deposits, withdrawals and transfers.</p>
+        <div class="account-summary"><div><div class="muted">Total accounts</div><div class="balance" id="statAccounts">0</div></div><div><div class="muted">Transactions logged</div><div class="balance" id="statTransactions">0</div></div></div>
+        <button class="btn secondary wide" data-goto="transactions">View Transactions →</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="page" id="page-create">
+    <article class="card" style="max-width:720px;margin:auto">
+      <div class="card-head"><div class="icon">＋</div><h2>Create a new MCBank account</h2></div>
+      <p class="sub">Create a named account for a player, shop, town or shared project.</p>
+      <form id="createForm2">
+        <div class="field"><label for="newName2">Account name</label><input id="newName2" required maxlength="40" placeholder="e.g. Emerald Emporium"></div>
+        <div class="field"><label for="newOwner2">Owner / player name</label><input id="newOwner2" required maxlength="32" placeholder="Minecraft username"></div>
+        <div class="field"><label for="newDeposit2">Initial deposit (£)</label><input id="newDeposit2" type="number" min="0" max="1000000000" step="0.01" value="0.00" required></div>
+        <button class="btn primary wide" type="submit">Create Account</button>
+      </form>
+    </article>
+  </section>
+
+  <section class="page" id="page-manage">
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))">
+      <article class="card">
+        <div class="card-head"><div class="icon blue">▤</div><h2>Manage account funds</h2></div>
+        <p class="sub">Choose an account and add or remove funds.</p>
+        <div class="field"><label for="manageAccount">Selected account</label><select id="manageAccount"><option value="">— Choose an account —</option></select></div>
+        <div class="account-summary"><div><strong id="manageName">No account selected</strong><div class="muted" id="manageOwner">—</div><div class="muted">Available balance</div><div class="balance" id="manageBalance">£0.00</div></div><div style="font-size:40px">🧰</div></div>
+        <div class="tabs" role="tablist"><button class="active" data-action="deposit">＋ Add funds</button><button data-action="withdraw">－ Remove funds</button><button data-action="transfer">↔ Transfer</button></div>
+        <div class="form-panel">
+          <form id="fundForm">
+            <div class="field"><label for="fundAmount">Amount (£)</label><input id="fundAmount" type="number" min="0.01" max="1000000000" step="0.01" placeholder="0.00" required></div>
+            <div class="field" id="recipientField" hidden><label for="recipient">Transfer to account</label><select id="recipient"><option value="">— Choose recipient —</option></select></div>
+            <div class="field"><label for="fundNote">Note (optional)</label><input id="fundNote" maxlength="100" placeholder="e.g. Shop sales, building materials"></div>
+            <button class="btn primary wide" id="fundSubmit" type="submit">＋ Add Funds</button>
+          </form>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-head"><div class="icon purple">▣</div><h2>Account list</h2></div>
+        <p class="sub">All accounts created in this browser.</p>
+        <div class="account-list" id="accountList"></div>
+        <div class="empty" id="noAccounts"><div class="big">🧭</div>No accounts yet. Create one to get started.</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="page" id="page-transactions">
+    <article class="card">
+      <div class="card-head"><div class="icon purple">▣</div><div><h2>Transaction history</h2><p class="sub" style="margin:3px 0 0">A running log of account activity.</p></div></div>
+      <div class="two" style="margin:14px 0"><div class="field"><label for="transactionAccount">Filter by account</label><select id="transactionAccount"><option value="">All accounts</option></select></div><div class="field"><label for="transactionType">Filter by type</label><select id="transactionType"><option value="">All activity</option><option value="deposit">Deposits</option><option value="withdraw">Withdrawals</option><option value="transfer-in">Transfers received</option><option value="transfer-out">Transfers sent</option><option value="created">Account created</option></select></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Date &amp; time</th><th>Account</th><th>Type</th><th>Description</th><th>Amount</th><th>Balance after</th></tr></thead><tbody id="transactionRows"></tbody></table><div class="empty" id="emptyTransactions"><div class="big">📜</div>No transactions match your filters.</div></div>
+      <div style="display:flex;justify-content:flex-end;margin-top:14px"><button class="btn secondary" id="exportBtn">↓ Export CSV</button></div>
+    </article>
+  </section>
+</main>
+
+<footer><div><div class="brand"><span class="grass">🌱</span><span>MC<span class="green">Bank</span></span></div><small>Banking for a stronger Minecraft community.</small></div><div><small>© 2026 MCBank · Fan-made Minecraft roleplay tool · Not affiliated with Mojang or Microsoft.</small></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const money = n => new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP'}).format(Number(n)||0);
+  const safe = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const STORAGE = 'mcbank-demo-v1';
+  let state = {accounts:[], transactions:[]}, action = 'deposit';
+  try { const saved = JSON.parse(localStorage.getItem(STORAGE)); if(saved && Array.isArray(saved.accounts) && Array.isArray(saved.transactions)) state = saved; } catch(e) {}
+  function persist(){ try{localStorage.setItem(STORAGE,JSON.stringify(state));}catch(e){toast('Could not save to browser storage. Export your transactions as a backup.');} }
+  function toast(message){const t=$('toast');t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2800);}
+  function account(id){return state.accounts.find(a=>a.id===id);}
+  function selectedManage(){return account($('manageAccount').value);}
+  function addTransaction(acc,type,amount,description,balanceAfter,related=''){
+    state.transactions.unshift({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),date:new Date().toISOString(),accountId:acc.id,accountName:acc.name,type,amount:Number(amount),description,balanceAfter:Number(balanceAfter),related});
+  }
+  function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+page));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));$('hero').style.display=page==='home'?'block':'none';window.scrollTo({top:0,behavior:'smooth'});if(page==='transactions')renderTransactions();}
+  document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+  document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.goto)));
+  $('themeBtn').addEventListener('click',()=>{document.body.classList.toggle('light');$('themeBtn').textContent=document.body.classList.contains('light')?'☀':'☾';});
+  function createAccount(name,owner,deposit){
+    name=name.trim();owner=owner.trim();deposit=Number(deposit);
+    if(!name||!owner||!Number.isFinite(deposit)||deposit<0||deposit>1e9){toast('Please enter valid account details and a non-negative deposit.');return false;}
+    if(state.accounts.some(a=>a.name.toLowerCase()===name.toLowerCase())){toast('An account with that name already exists.');return false;}
+    const a={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),name,owner,balance:Math.round(deposit*100)/100,created:new Date().toISOString()};
+    state.accounts.push(a);addTransaction(a,'created',0,'Account opened',a.balance);
+    if(deposit>0)addTransaction(a,'deposit',deposit,'Initial deposit',a.balance);
+    persist();render();$('homeAccount').value=a.id;$('manageAccount').value=a.id;updateSelected();toast('Account created successfully!');return true;
+  }
+  function attachCreate(form,nameId,ownerId,depositId){$(form).addEventListener('submit',e=>{e.preventDefault();if(createAccount($(nameId).value,$(ownerId).value,$(depositId).value)){e.target.reset();$(depositId).value='0.00';if(form==='createForm2')go('manage');}});}
+  attachCreate('createForm','newName','newOwner','newDeposit');attachCreate('createForm2','newName2','newOwner2','newDeposit2');
+  function fillSelect(id,placeholder,includeAll=false){
+    const el=$(id),previous=el.value;el.innerHTML='';
+    const first=document.createElement('option');first.value='';first.textContent=placeholder;el.appendChild(first);
+    state.accounts.forEach(a=>{const o=document.createElement('option');o.value=a.id;o.textContent=a.name+' — '+a.owner;el.appendChild(o);});
+    if(state.accounts.some(a=>a.id===previous))el.value=previous;
+  }
+  function render(){
+    ['homeAccount','manageAccount','recipient','transactionAccount'].forEach(id=>{
+      const val=$(id).value;let placeholder=id==='transactionAccount'?'All accounts':id==='recipient'?'— Choose recipient —':'— Choose an account —';
+      const el=$(id);el.innerHTML='';const first=document.createElement('option');first.value='';first.textContent=placeholder;el.appendChild(first);
+      state.accounts.forEach(a=>{const o=document.createElement('option');o.value=a.id;o.textContent=a.name+' — '+a.owner;el.appendChild(o);});
+      if(state.accounts.some(a=>a.id===val))el.value=val;
+    });
+    $('statAccounts').textContent=state.accounts.length;$('statTransactions').textContent=state.transactions.length;
+    const list=$('accountList');list.innerHTML='';$('noAccounts').style.display=state.accounts.length?'none':'block';
+    state.accounts.forEach(a=>{const tile=document.createElement('div');tile.className='account-tile';tile.innerHTML='<div><h3>'+safe(a.name)+'</h3><div class="muted">'+safe(a.owner)+'</div><div class="balance">'+money(a.balance)+'</div></div><button class="btn secondary" data-select="'+safe(a.id)+'">Open</button>';list.appendChild(tile);});
+    list.querySelectorAll('[data-select]').forEach(b=>b.addEventListener('click',()=>{$('manageAccount').value=b.dataset.select;updateSelected();go('manage');}));
+    updateSelected();renderTransactions();
+  }
+  function updateSelected(){
+    const a=selectedManage(),h=account($('homeAccount').value);
+    $('manageName').textContent=a?a.name:'No account selected';$('manageOwner').textContent=a?'Owner: '+a.owner:'—';$('manageBalance').textContent=money(a?a.balance:0);
+    $('homeAccountName').textContent=h?h.name:'No account selected';$('homeOwner').textContent=h?'Owner: '+h.owner:'Choose an account above';$('homeBalance').textContent=money(h?h.balance:0);
+    [...$('recipient').options].forEach(o=>{o.disabled=!!a&&o.value===a.id;});
+  }
+  $('homeAccount').addEventListener('change',updateSelected);$('manageAccount').addEventListener('change',updateSelected);
+  document.querySelectorAll('[data-action]').forEach(b=>b.addEventListener('click',()=>{action=b.dataset.action;document.querySelectorAll('[data-action]').forEach(x=>x.classList.toggle('active',x===b));$('recipientField').hidden=action!=='transfer';$('fundSubmit').textContent=action==='deposit'?'＋ Add Funds':action==='withdraw'?'－ Remove Funds':'↔ Transfer Funds';$('fundSubmit').className='btn wide '+(action==='withdraw'?'danger':'primary');}));
+  $('fundForm').addEventListener('submit',e=>{
+    e.preventDefault();const a=selectedManage(),amount=Math.round(Number($('fundAmount').value)*100)/100,note=$('fundNote').value.trim();
+    if(!a){toast('Select an account first.');return;}if(!Number.isFinite(amount)||amount<=0||amount>1e9){toast('Enter an amount greater than £0.00.');return;}
+    const description=note||({deposit:'Funds added',withdraw:'Funds removed',transfer:'Account transfer'}[action]);
+    if(action==='deposit'){a.balance=Math.round((a.balance+amount)*100)/100;addTransaction(a,'deposit',amount,description,a.balance);}
+    else if(action==='withdraw'){if(a.balance<amount){toast('Insufficient funds in this account.');return;}a.balance=Math.round((a.balance-amount)*100)/100;addTransaction(a,'withdraw',-amount,description,a.balance);}
+    else {
+      const to=account($('recipient').value);if(!to){toast('Choose a recipient account.');return;}if(to.id===a.id){toast('Choose a different recipient account.');return;}if(a.balance<amount){toast('Insufficient funds for this transfer.');return;}
+      a.balance=Math.round((a.balance-amount)*100)/100;to.balance=Math.round((to.balance+amount)*100)/100;
+      addTransaction(a,'transfer-out',-amount,'Transfer to '+to.name+(note?' — '+note:''),a.balance,to.id);
+      addTransaction(to,'transfer-in',amount,'Transfer from '+a.name+(note?' — '+note:''),to.balance,a.id);
+    }
+    persist();render();$('manageAccount').value=a.id;updateSelected();$('fundAmount').value='';$('fundNote').value='';toast(action==='deposit'?'Funds added.':action==='withdraw'?'Funds removed.':'Transfer completed.');
+  });
+  $('transactionAccount').addEventListener('change',renderTransactions);$('transactionType').addEventListener('change',renderTransactions);
+  const typeLabel=t=>({'deposit':'Deposit','withdraw':'Withdrawal','transfer-in':'Transfer received','transfer-out':'Transfer sent','created':'Account opened'}[t]||t);
+  function renderTransactions(){
+    if(!$('transactionRows'))return;
+    const aid=$('transactionAccount').value,type=$('transactionType').value;
+    const rows=state.transactions.filter(t=>(!aid||t.accountId===aid)&&(!type||t.type===type));
+    $('transactionRows').innerHTML='';$('emptyTransactions').style.display=rows.length?'none':'block';
+    rows.forEach(t=>{const tr=document.createElement('tr');const date=new Date(t.date);const amountClass=t.amount>0?'positive':t.amount<0?'negative':'';tr.innerHTML='<td>'+safe(date.toLocaleString('en-GB'))+'</td><td>'+safe(t.accountName)+'</td><td>'+safe(typeLabel(t.type))+'</td><td>'+safe(t.description)+'</td><td class="'+amountClass+'">'+(t.amount>0?'+':'')+money(t.amount)+'</td><td>'+money(t.balanceAfter)+'</td>'; $('transactionRows').appendChild(tr);});
+  }
+  $('exportBtn').addEventListener('click',()=>{
+    const headers=['Date & time','Account','Type','Description','Amount (£)','Balance after (£)'];
+    const rows=state.transactions.map(t=>[new Date(t.date).toLocaleString('en-GB'),t.accountName,typeLabel(t.type),t.description,t.amount.toFixed(2),t.balanceAfter.toFixed(2)]);
+    const csv=[headers,...rows].map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+    const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='mcbank-transactions.csv';link.click();URL.revokeObjectURL(url);
+  });
+  render();
+})();
+</script>
+</body>
+</html>
